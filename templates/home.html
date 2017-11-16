@@ -1,0 +1,70 @@
+<! DOCTYPE html>
+<html>
+  <head>
+    <title>  Home  </title>
+  </head>
+  <style>
+    body {background-color: D3BFA0;}
+    div {
+    background-color: EFE7C4;
+
+    padding: 10px;
+    border-radius: 25px;
+    }
+    img {
+    border-radius:25px;
+    opacity:.86;
+    height: 300px;
+    width:600px;
+    }
+  </style>
+  <body>
+    <center>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <h3> {{message}} </h3>
+    {% endfor %}
+
+    </center>
+    <center>
+      <h1>Home Page</h1><br>
+      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
+      <br><br><br>
+      <div class="box">
+	<h3>Read Stories</h3>
+	<form method="post" action="/view">
+	  {% for details in view %}
+	  <button name="storyID" value={{details[0]}}>
+	    <b>{{details[1]}}</b>
+	    <br>Your Edit: {{details[2]}}
+	  </button>
+	  {% endfor %}
+	</form>
+      </div>
+      <br><br>
+      <div class="box2">
+	<h3>Edit Stories</h3>
+	<form method="post" action="/edit">
+	  {% for details in edit %}
+	  <button name="storyID" value={{details[0]}}>
+	    <b>{{details[1]}}</b>
+	    <br>Last Edit: {{details[2]}}
+	  </button>
+	  {% endfor %}
+	</form>
+      </div>
+      <br><br>
+      <div class="box3">
+	<h3>Create Stories</h3>
+	
+	<form method="get" action="/create">
+	  <input type="submit" value="Create">
+	</form>
+      </div>
+      <br><br>
+      <form method="get" action="/logout">
+	<input type="submit" value="Log Out"><br><br>
+      </form>
+    </center>
+  </body>
+</html>

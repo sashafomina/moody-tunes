@@ -1,0 +1,48 @@
+<! DOCTYPE HTML>
+<html>
+  <head>
+    <title>  Register  </title>
+  </head>
+  <style>
+    body {background-color: D3BFA0;}
+    div.box {
+    background-color: EFE7C4;
+    width: 400px;
+    padding: 10px;
+    border-radius: 25px;
+    }
+    img {
+    border-radius:25px;
+    opacity:.86;
+    }
+  </style>
+  <body>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <center>
+      <h3> {{message}} </h3>
+    </center>
+    {% endfor %}
+    <br><br>
+    <center>
+      <h1>Story Time</h1><br>
+      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
+      <br><br><br>
+      <div class="box">
+	Hello, please enter a username and password to register. <br><br>
+	<form method = "POST" action ="/register">
+          Username:
+          <input type="text" name="newUsername" required> <br><br>
+          Password:
+          <input type = "password" name = "newPassword" required>  <br><br>
+          Confirm password:
+          <input type="password" name = "repeatPassword" required> <br> <br>
+          <input type="submit" value="Register">
+	</form>
+	<form method="get" action="/">
+	  <input type="submit" value="Back"><br><br>
+      </form>
+      </div>
+    </center>
+  </body>
+</html>
