@@ -1,35 +1,35 @@
 <! DOCTYPE HTML>
 <html>
   <head>
+    
+    <!-- bootstrap !-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    
+    <!-- custom style for website !-->
+    <link rel="stylesheet" href="/static/style.css">
+
     <title>  Login  </title>
-  </head>
-  <style>
-    body {background-color: D3BFA0;}
-    div.box {
-    background-color: EFE7C4;
-    width: 400px;
-    padding: 10px;
-    border-radius: 25px;
-    }
-    img {
-    border-radius:25px;
-    opacity:.86;
-    }
-  </style>
-  <body>
+
+    
+    <!-- messaging the user !-->
     {% set messages = get_flashed_messages() %}
     {% for message in messages %}
-    <center>
-      <h3> {{message}} </h3>
-    </center>
-      {% endfor %}
-    <center>
-      <br><br>
-      <h1>Story Time</h1><br>
-      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
-      <br><br><br>
-      <div class="box">
-      <form method = "post" action ="/login">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h3> {{message}} </h3>
+    
+    {% endfor %}
+
+    
+  </head>
+
+  <body>
+    
+    <div class="container">
+      <form class="signin" method = "post" action ="/login">
 
 	Enter your username:<br>
 	<input type="text" name="username" required><br><br>
@@ -44,7 +44,7 @@
 	Don't have an account?
 	<input type="submit" value = "Register">
       </form>
-      </div>
-  </center>
-  </body>
+    </div>
+</center>
+</body>
 </html>

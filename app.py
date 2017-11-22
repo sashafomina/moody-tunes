@@ -8,7 +8,7 @@ my_app.secret_key = os.urandom(32)
 #========================LOGIN/ACCOUNT STUFF============================
 @my_app.route('/', methods=['GET', 'POST'])
 def root():
-    return redirect(url_for("login"))
+    return render_template('home.html')
 
 @my_app.route("/login", methods =['GET','POST'])
 def login():
@@ -25,6 +25,7 @@ def login():
             status = db_func.validate(username, hex_dig)
             if status:
                 session["user"] = username
+                return render_template("diary.html")
             elif db_func.hasUsername(username):
                 flash("Incorrect credentials.")
             else:

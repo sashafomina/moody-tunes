@@ -1,70 +1,51 @@
 <! DOCTYPE html>
 <html>
+  
   <head>
-    <title>  Home  </title>
-  </head>
-  <style>
-    body {background-color: D3BFA0;}
-    div {
-    background-color: EFE7C4;
 
-    padding: 10px;
-    border-radius: 25px;
-    }
-    img {
-    border-radius:25px;
-    opacity:.86;
-    height: 300px;
-    width:600px;
-    }
-  </style>
-  <body>
-    <center>
+    <!-- bootstrap !-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    
+    <!-- custom style for website !-->
+    <link rel="stylesheet" type="text/css" href="../static/style.css"/>
+    
+    <title>  Home  </title>
+
+    <!-- messaging the user !-->
     {% set messages = get_flashed_messages() %}
     {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <h3> {{message}} </h3>
+    
     {% endfor %}
 
-    </center>
-    <center>
-      <h1>Home Page</h1><br>
-      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
-      <br><br><br>
-      <div class="box">
-	<h3>Read Stories</h3>
-	<form method="post" action="/view">
-	  {% for details in view %}
-	  <button name="storyID" value={{details[0]}}>
-	    <b>{{details[1]}}</b>
-	    <br>Your Edit: {{details[2]}}
-	  </button>
-	  {% endfor %}
-	</form>
+
+    <div class="container-fluid">
+      <h1>MoodyTunes</h1>
+    </div>
+
+    <!-- navbar !-->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="/">Home</a>
+      <a class="nav-item nav-link" href="login">Login</a>
+      <a class="nav-item nav-link" href="register">Signup</a>
+    </nav>
+  </head>
+
+  <body>
+
+    <!-- jumbotron: Greeting !-->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+	<h1 class="display-3">Welcome</h1>
+	<p class="lead">This is stuff that our website does...</p>
       </div>
-      <br><br>
-      <div class="box2">
-	<h3>Edit Stories</h3>
-	<form method="post" action="/edit">
-	  {% for details in edit %}
-	  <button name="storyID" value={{details[0]}}>
-	    <b>{{details[1]}}</b>
-	    <br>Last Edit: {{details[2]}}
-	  </button>
-	  {% endfor %}
-	</form>
-      </div>
-      <br><br>
-      <div class="box3">
-	<h3>Create Stories</h3>
-	
-	<form method="get" action="/create">
-	  <input type="submit" value="Create">
-	</form>
-      </div>
-      <br><br>
-      <form method="get" action="/logout">
-	<input type="submit" value="Log Out"><br><br>
-      </form>
-    </center>
+      <br>Here's some more text...<br><br>
+      <button class="link" type="button" href="register">Create an Account</input>
+    </div>
   </body>
 </html>
