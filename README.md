@@ -1,2 +1,28 @@
 # moody-tunes
-softdev project #2 by: Md Abedin, Sasha Fomina, Augie Murphy, Xing Tao Shi
+
+**Overview:**
+
+Team moody tune's softdev project #2. Our project is a virtual diary that you can make entries in. Every entry is sent to the IBM Watson Tone Analyzer to determine how your day was, and then this mood data is used to search <INSERT MUSIC API> for a recommended song for that day.
+
+
+**Instructions:**
+
+First, clone the repo locally. To launch the website on localhost, run the command
+
+```
+$ python <INSERT FINAL FILE NAME>
+```
+
+To view the website, naviaget to localhost:5000 in your browser. Make an account by following the signup link on the home page. To make a diary entry, navigate to your diary page and fill out the text box. Your song for that entry will show up next to that entry. To see more statistics about your entire diary, go to the statistics page. <CHANGE ONCE WEBSITE IS DEVELOPED>
+
+
+**Dependencies:**
+- <a href = "https://www.python.org/downloads/"> python </a>
+- <a href = "http://flask.pocoo.org/docs/0.12/installation/"> flask </a>
+- <a href = "https://console.bluemix.net/registration/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dtone_analyzer%26hideTours%3Dtrue&cm_mmc%3DOSocial_Tumblr-_-Watson%2BCore_Watson%2BCore%2B-%2BPlatform-_-WW_WW-_-wdc-ref%26cm_mmc%3DOSocial_Tumblr-_-Watson%2BCore_Watson%2BCore%2B-%2BPlatform-_-WW_WW-_-wdc-ref%26cm_mmca1%3D000000OF%26cm_mmca2%3D10000409&cm_mc_uid=41516314672015106846304&cm_mc_sid_50200000=1511376254&cm_mc_sid_52640000=1511376254"> IBM Watson Tone Analyzer API key </a>: sign up for an API key
+- <a href = ""> <b>INSERT MUSIC API</b> key </a>: <b>INSTRUCTIONS</b>
+  
+
+**Team:**
+
+Md Abedin (project manager), Sasha Fomina, Augie Murphy, Xing Tao Shi
