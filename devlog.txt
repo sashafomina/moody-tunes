@@ -2,3 +2,7 @@
 mdA -- 11-15-17 23:15
 added design doc, made devlog and summary files
 
+xingtaoS -- 11-15-17 23:15
+copied over db files and app file including login stuff
+
+
