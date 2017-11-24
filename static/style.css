@@ -3,28 +3,6 @@ a {
     color: black;
 }
 
-.bg1 {
-    background-image: url("olp.jpg");
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-position:center;
-}
-
-.bg2 {
-    background-image: url("download.jpg");
-    background-repeat:no-repeat;
-    background-size: 100%;
-    background-position:center;
-}
-
-
-.bg3 {
-    background-image: url("olp.jpg");
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-position:center;
-}
-
 
 .blog-header {
     padding:15px;
@@ -40,7 +18,7 @@ a {
 }
 
 .blog-sidebar{
-    background-color: rgb(99, 52, 49);
+
 }
 
 body {
@@ -51,20 +29,23 @@ body {
 .box1{
     text-align:center;
     padding:15px;
-    background-color:lavenderblush;
+    background-color:#465C8B;
     margin-left:3rem;
-    
+    border-radius:5px;
+    font:20px Arial;
 }
 
 .box2{
     text-align: enter;
     padding:15px;
-    background-color: lavenderblush;
+    background-color:#465C8B;
     margin-right:3rem;
+    border-radius:5px;
+    font:20px Arial;
 }
 
 .btn-a {
-    background-color:darkseagreen;
+    background-color:seashell;
     color: Black;
 }
 
@@ -141,7 +122,7 @@ main {
 .p-1{
     margin-left:3rem;
     margin-right:3rem;
-    color:seashell;
+    color:black;
 }
 
 .sidebar-module {
