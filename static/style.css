@@ -1,0 +1,155 @@
+a {
+    text: 10px Times;
+    color: black;
+}
+
+.bg1 {
+    background-image: url("olp.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+
+.bg2 {
+    background-image: url("download.jpg");
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position:center;
+}
+
+
+.bg3 {
+    background-image: url("olp.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+
+
+.blog-header {
+    padding:15px;
+    background-color: white;
+}
+
+.blog-main {
+    background-color: oldlace;
+}
+
+.blog-masthead{
+    background-color:LightSteelBlue;
+}
+
+.blog-sidebar{
+    background-color: rgb(99, 52, 49);
+}
+
+body {
+    background-color:#eceeef;
+    height: 100%;
+}
+
+.box1{
+    text-align:center;
+    padding:15px;
+    background-color:lavenderblush;
+    margin-left:3rem;
+    
+}
+
+.box2{
+    text-align: enter;
+    padding:15px;
+    background-color: lavenderblush;
+    margin-right:3rem;
+}
+
+.btn-a {
+    background-color:darkseagreen;
+    color: Black;
+}
+
+button{
+    background-color:SeaShell;
+}
+
+.container {
+}
+
+.container-1 {
+    text-align: center;
+    background-color:LightSteelBlue;
+    padding:15px;
+}
+
+.container-fluid {
+    background-color:#CAE4DB; 
+    color:#465C8B;
+    padding:25px;
+    font: 25px Courier;
+    text-align: left;
+}
+
+div{
+
+
+}
+
+/** used in jumbotron **/
+.display-3 {
+    font:70px Arial;
+    color: DarkSlateGrey;
+}
+
+.form{
+    padding: 15px;
+}
+
+.form-group{
+    padding:15px;
+    background-color:darkseagreen;
+    border-radius:5px;
+}
+
+h2{
+}
+
+head {
+}
+
+html{
+    height:100%;
+}
+
+.jumbotron{
+    background-color:AliceBlue;
+    text-align:center;
+    padding:15px;
+}
+
+.lead {
+    font: 20px Times;
+}
+
+main {
+}
+
+.nav-lt {
+    background-color:seashell;
+    color:DarkSlateGrey;
+}
+
+.p-1{
+    margin-left:3rem;
+    margin-right:3rem;
+    color:seashell;
+}
+
+.sidebar-module {
+    text-align: center;
+    background-color:#ccc;
+    padding:15px;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+

@@ -51,6 +51,45 @@ def register():
                 return redirect(url_for("login"))
     return render_template("register.html")
 
+
+@my_app.route('/info', methods=['GET','POST'])
+def info():
+    if 'user' in session:
+        return render_template("info.html")
+    else:
+        return redirect('login')
+
+@my_app.route('/credits', methods=['GET','POST'])
+def credits():
+    if 'user' in session:
+        return render_template("citations.html")
+    else:
+        return redirect('login')
+
+@my_app.route('/diary', methods=['GET','POST'])
+def diary():
+    if 'user' in session:
+        #if method=='post':
+            #display all posts made where the month is equal to the month in the hidden input
+        return render_template("diary.html")#, details
+    else:
+        return redirect('login')
+
+@my_app.route('/statistics', methods=['GET','POST'])
+def statistics():
+    if 'user' in session:
+        return render_template("statistics.html")#, details
+    else:
+        return redirect('login')
+
+    
+@my_app.route('/playlists', methods=['GET','POST'])
+def playlists():
+    if 'user' in session:
+        return render_template("playlists.html")#, details
+    else:
+        return redirect('login')
+
 @my_app.route('/logout', methods=['GET'])
 def logout():
     if 'user' in session:

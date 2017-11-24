@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+  
+    <!-- bootstrap !-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    
+    <!-- custom style for website !-->
+    <link rel="stylesheet" type="text/css" href="../static/style.css"/>
+    
+    <title>  Home  </title>
+
+    <!-- messaging the user !-->
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h3> {{message}} </h3>
+    
+    {% endfor %}
+
+</head>
+
+<body>
+  <div class="bg1">
+  <header>
+    <!-- heading !-->
+    <div class="blog-masthead">
+      <div class="row-10">
+	<nav class="nav">
+	  <a class="nav-link active" href="/">Home</a>
+	  <a class="nav-link" href="statistics">Statistics</a>
+	  <a class="nav-link" href="playlists">Playlists</a>
+	</nav>
+      </div>
+    </div>
+
+    <div class="blog-header">
+      <div class="container">
+	<h1 class="blog-title">Moody Journal</h1>
+	<p class="lead blog-description">Brief description of what your moody-tunes journal is...</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- journal entries (feed) !-->
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-sm-8 blog-main">
+	
+	<!-- new entry !-->
+	<br>
+	<div class="container">
+	  <div class="form-group row" action="/create">
+	    <legend>Create Stories</legend>
+	    <textarea class="form-control" id="exampleTextarea" rows="3" value="Enter your mood here" content="entry"></textarea>
+	    <input class="btn-block" type="submit" value="Create">
+	  </div>
+	</div>
+
+	
+	<!-- display previous entries accordian-style !-->
+	<h3>Read Stories</h3>
+	<form method="post" action="/view">
+	  <div id="accordion" role="tablist" aria-multiselectable="true">
+	    {% for details in view %}
+	    <div class="card blog-post">
+	      <div class="card-header" role="tab" id="headingOne">
+		<h2 class="card-header blog-post-title" role="tab">
+		  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		    {{details[0]}}
+		  </a>
+		</h2>
+	      </div>
+
+	      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+		<div class="card-block">
+		  {{details[1]}}
+		</div>
+	      </div>
+	      <button name="storyID" value={{details[0]}}>
+		<b>{{details[1]}}</b>
+		<br>Your Edit: {{details[2]}}
+	      </button>
+	    </div>
+	    {% endfor %}
+	  </div>
+      </div>
+
+      
+      <!-- sidebar !-->
+      <aside class="col-sm-3 ml-sm-auto blog-sidebar">
+
+	<!-- about this journal or something !-->
+	<div class="sidebar-module sidebar-module-inset">
+	  <h4>something</h4>
+	  <p>
+	    all about something idk man write something here if we're colorcoding, this is what the colors mean
+	  </p>
+	</div>
+
+	<!-- archive !-->
+	<div class="sidebar-module">
+	  <h4>History</h4>
+	  <ol class="list-unstyled">
+	    <form method='post'>
+	      <li><a href="diary"><input type="hidden" month="nov"></input>November</a></li>
+	      <li><a href="diary"><input type="hidden" month="oct"></input>October</a></li>
+	      <li><a href="diary"><input type="hidden" month="sep"></input>September</a></li>
+	      <li><a href="diary"><input type="hidden" month="aug"></input>Augustr</a></li>
+	    </form>
+	  </ol>
+	</div>
+      </aside>
+ 
+  </main>
+  </div>
+</body>
+</html>

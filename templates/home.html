@@ -2,7 +2,6 @@
 <html>
   
   <head>
-
     <!-- bootstrap !-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     
@@ -29,23 +28,61 @@
     </div>
 
     <!-- navbar !-->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <a class="navbar-brand" href="/">Home</a>
-      <a class="nav-item nav-link" href="login">Login</a>
-      <a class="nav-item nav-link" href="register">Signup</a>
-    </nav>
+    <div class="blog-masthead">
+      <div class="row-10">
+	<nav class="nav nav-lt">
+	  <a class="nav-link active" href="/">Home</a>
+	  <a class="nav-link" href="info">About Us</a>
+	  <a class="nav-link" href="credits">APIs/Credits</a>
+	</nav>
+      </div>
+    </div>
+
   </head>
 
   <body>
+    <div class="bg2">
 
-    <!-- jumbotron: Greeting !-->
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-	<h1 class="display-3">Welcome</h1>
-	<p class="lead">This is stuff that our website does...</p>
+      <br><br><br>
+      
+      <div class="row-10">
+	<!-- jumbotron: Greeting !-->
+	<div class="jumbotron jumbotron-fluid">
+	  <h1 class="display-3">Welcome</h1>
+	  <p class="lead">This is stuff that our website does...</p>
+	</div>
       </div>
-      <br>Here's some more text...<br><br>
-      <button class="link" type="button" href="register">Create an Account</input>
-    </div>
+      <br><br><br>
+
+      <div class="row p-1">
+	blah blah blah<br>
+	here's some more info<br>
+	write stuff here<br>
+	yay<br><br>
+      </div>
+      
+      <div class="row">
+	<div class="col">
+
+	  <div class="box1">
+	    If you already have an account, sign in here!!!<br><br>
+	    <button type="button" class="btn btn-a btn-lg btn-block">
+	      <a href="login">Login</a>
+	    </button>
+	  </div>
+
+	</div>
+	<div class="col">
+	  <div class="box2">
+	    If you don't have an account, you can create one.<br><br>
+	    <button type="button" class="btn btn-a btn-lg btn-block">
+	      <a href="register">Register</a>
+	    </button>
+	  </div>
+	</div>
+
+	<!-- carousel or something to take up space !-->
+      </div>
+
   </body>
 </html>
