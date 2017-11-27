@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os, csv, sqlite3, hashlib
-import db_func
+from utils import db_func
 
 my_app = Flask(__name__)
 my_app.secret_key = os.urandom(32)
@@ -75,6 +75,13 @@ def diary():
     else:
         return redirect('login')
 
+@my_app.route('/newEntry', methods=['GET','POST'])
+def newEntry():
+    if 'user' in session:
+        return render_template("newentry.html")
+    else:
+        return redirect('login')
+    
 @my_app.route('/statistics', methods=['GET','POST'])
 def statistics():
     if 'user' in session:

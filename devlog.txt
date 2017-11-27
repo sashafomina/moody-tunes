@@ -5,4 +5,8 @@ added design doc, made devlog and summary files
 xingtaoS -- 11-15-17 23:15
 copied over db files and app file including login stuff
 
+xingtaoS -- 11-26-17 19:50
+fixed db_func error: replaced db_func
+added usability w/ utils folder
+
 
