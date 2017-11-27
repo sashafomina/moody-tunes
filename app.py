@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os, csv, sqlite3, hashlib
-from utils import db_func
+from utils import db_func, api_library
 
 my_app = Flask(__name__)
 my_app.secret_key = os.urandom(32)
@@ -14,6 +14,7 @@ def root():
 def login():
     if 'user' in session:
         ID = db_func.getID(session['user'])
+        return redirect(url_for('diary'))
     else:
         if (request.method == 'GET'):
             return render_template('login.html')
@@ -25,7 +26,7 @@ def login():
             status = db_func.validate(username, hex_dig)
             if status:
                 session["user"] = username
-                return render_template("diary.html")
+                return redirect(url_for('diary'))
             elif db_func.hasUsername(username):
                 flash("Incorrect credentials.")
             else:
@@ -75,12 +76,39 @@ def diary():
     else:
         return redirect('login')
 
-@my_app.route('/newEntry', methods=['GET','POST'])
-def newEntry():
-    if 'user' in session:
-        return render_template("newentry.html")
-    else:
-        return redirect('login')
+@my_app.route('/create', methods=['GET','POST'])
+def create():
+    if (request.method == 'POST'):
+        entry = request.form["newDiaryEntry"]
+        dict_of_moods = api_library.analyze_tone(entry)
+        #string_top_mood = api_library.primary_mood(dict_of_moods)
+        flash(dict_of_moods)
+    return redirect(url_for('diary'))
+        
+    # if 'user' in session:
+    #     return redirect(url_for("login"));
+    # else:
+    #     return redirect('login')
+
+# @my_app.route('/register', methods=['GET','POST'])
+# def register():
+#     if (request.method == 'POST'):
+#         username = request.form["newUsername"]
+#         password = request.form["newPassword"]
+#         repeat = request.form["repeatPassword"]
+#         if(password != repeat):
+#             flash("Passwords do not match.")
+#         else:
+#             if db_func.hasUsername(username):
+#                 flash("Username taken.")
+#             else:
+#                 hash_obj = hashlib.sha256(password)
+#                 hex_dig = hash_obj.hexdigest()
+#                 db_func.addUser(username, hex_dig)
+#                 flash("Your account has been registered.")
+#                 return redirect(url_for("login"))
+#     return render_template("register.html")
+
     
 @my_app.route('/statistics', methods=['GET','POST'])
 def statistics():

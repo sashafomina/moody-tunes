@@ -29,10 +29,12 @@ def analyze_tone(diary_entry):
 
     tone_scores_dict = {}
     
+    print tone_results
+
     for d in (tone_results["document_tone"])["tone_categories"][0]["tones"]:
         tone_scores_dict[d["tone_name"]] = d["score"]
         
-    #print tone_scores_dict
+    print tone_scores_dict
     return tone_scores_dict
 
 
