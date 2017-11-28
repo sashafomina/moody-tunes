@@ -2,13 +2,6 @@ import json, requests, urllib2
 import random
 from requests.auth import HTTPBasicAuth
 
-{
-    "username": "pandora one",
-    "password": "TVCKIBGS9AO9TSYLNNFUML0743LH82D",
-    "deviceModel": "D01",
-    "version": "5"
-}
-
 lastfm_key = "e711999d7d3e55af0f0d28b12de31bfb"
 
 
@@ -22,7 +15,7 @@ def analyze_tone(diary_entry):
     encoded_entry = urllib2.quote(diary_entry)
     link =  'https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&text=' + encoded_entry
 
-    tone_results = requests.get(link, auth=HTTPBasicAuth("1040bc05-8ffa-4577-a465-43d95b55737d","0xvV0yqEOsyy"))
+    tone_results = requests.get(link, auth=HTTPBasicAuth("11595b44-c4bf-4abd-bd37-404256bde5a6","1vPhhGJ2V7Xu"))
 
     #tone_results is now a dictionary 
     tone_results = tone_results.json()
@@ -71,10 +64,10 @@ def get_child_songs(num_stars, song, artist):
         rand_num = random.randint(0,32)
         
     if num_stars == 2:
-        rand_num = random.randint(32,66)
+        rand_num = random.randint(33,66)
 
     if num_stars == 3:
-        rand_num = random.randint(32,99)
+        rand_num = random.randint(67,99)
 
     child_song.append(similiar_tracks_dict["similartracks"]["track"][rand_num]["name"])
     child_song.append(similiar_tracks_dict["similartracks"]["track"][rand_num]["artist"]["name"])
@@ -102,4 +95,13 @@ def get_link(song,artist):
             url = search_results[i]["url"]
             return url
     
+#TEST CASES ------------------------------
+#print get_link("let it be", "the beatles")
+#print  get_child_songs(1, "the night we met", "lord huron")
+#print "\n\n\n"
+d = analyze_tone("i like pie")
+print d
+#print "\n\n"
+#print primary_tone(d)
+
 
