@@ -49,7 +49,7 @@ def update (tableName, field, newVal, condition, cursor):
 
 def table_gen(c):
     #sad, joy, angry/disgust, fear are the most recent song recommendation for this user for each mood
-    create_users = "CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT,sad TEXT, joy TEXT, angry TEXT,fear TEXT);"
+    create_users = "CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT,sadness TEXT, joy TEXT, anger TEXT,fear TEXT);"
     
     #mood will be a dictionary, song rating is either 1,2,3 (2 by default)
     create_diary = "CREATE TABLE IF NOT EXISTS diary(username TEXT, date TEXT, entry TEXT, mood TEXT, song TEXT, songRating INTEGER);"

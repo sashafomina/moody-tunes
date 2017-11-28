@@ -110,7 +110,7 @@ def accountSubmit():
         counter += 1
 
     if counter == 0:
-        dbLibrary.insertRow('users',['username', 'password'],[username, password],cursor)
+        dbLibrary.insertRow('users',['username', 'password', 'sadness', 'joy', 'anger', 'fear'],[username, password, "base", "base", "base", "base"],cursor)
         flash("Account Successfully Created")
         dbLibrary.commit(dbTunes)
         dbLibrary.closeFile(dbTunes)
@@ -137,6 +137,38 @@ def diary():
     #entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM users")
     return render_template("diary.html",name = current_user)
 #-----------------------------------------------------------
+
+#---------------CREATING A NEW ENTRY----------------------
+@tunes_app.route("/create", methods = ['POST' , 'GET'])
+def create():
+    if 'username' not in session:
+        flash("Session timed out")
+        return redirect(url_for('login'))
+
+    new_entry = request.form['newDiaryEntry']
+
+    d_tone = analyze_tone(new_entry)
+
+    max_mood = (primary_tone(d_tone)).lower()
+
+    dbTunes = dbLibrary.openDb("data/tunes.db")
+    cursor = dbLibrary.createCursor(dbTunes)
+
+    recent_song = cursor.execute("SELECT " + max_mood + " FROM users;")
+
+    if recent_song == "base":
+        song_rec_cursor = cursor.execute("SELECT song, artist FROM songs WHERE parentSong = base") 
+    
+    
+    
+
+  
+    insertRow("diary", ["username", "date" "entry" , "mood" ,"song", "songRating"] , )
+    
+
+
+
+#--------------------------------------------------------
 
 if __name__ == '__main__':
     tunes_app.debug = True
