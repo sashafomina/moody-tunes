@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
-import os, csv, sqlite3, hashlib
+import os, csv, sqlite3, hashlib, uuid
 from utils import api_library, dbLibrary
 
 
@@ -122,6 +122,20 @@ def accountSubmit():
         dbLibrary.closeFile(dbTunes)
         return redirect(url_for('account'))
 
+#-----------------------------------------------------------
+
+#----------------DIARY HOME---------------------------------
+@tunes_app.route("/diary", methods = ['POST' , 'GET'])
+
+def diary():
+    if 'username' not in session:
+        flash("Session timed out")
+        return redirect(url_for('login'))
+    current_user = session["username"]
+    dbTunes = dbLibrary.openDb("data/tunes.db")
+    cursor = dbLibrary.createCursor(dbTunes)
+    entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM users")
+    return render_template("diary.html",name = current_user)
 #-----------------------------------------------------------
 
 if __name__ == '__main__':
