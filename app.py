@@ -132,9 +132,9 @@ def diary():
         flash("Session timed out")
         return redirect(url_for('login'))
     current_user = session["username"]
-    dbTunes = dbLibrary.openDb("data/tunes.db")
-    cursor = dbLibrary.createCursor(dbTunes)
-    entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM users")
+    #dbTunes = dbLibrary.openDb("data/tunes.db")
+    #cursor = dbLibrary.createCursor(dbTunes)
+    #entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM users")
     return render_template("diary.html",name = current_user)
 #-----------------------------------------------------------
 
