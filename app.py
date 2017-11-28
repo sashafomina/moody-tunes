@@ -1,142 +1,129 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os, csv, sqlite3, hashlib
-from utils import db_func, api_library
+from utils import api_library, dbLibrary
 
-my_app = Flask(__name__)
-my_app.secret_key = os.urandom(32)
 
-#========================LOGIN/ACCOUNT STUFF============================
-@my_app.route('/', methods=['GET', 'POST'])
+def hash_password(password):
+    key = uuid.uuid4().hex
+    return hashlib.sha256(key.encode() + password.encode()).hexdigest() + ':' + key
+
+def check_password(hashed_password, user_password):
+    password,key = hashed_password.split(":")
+    return password == hashlib.sha256(key.encode() + user_password.encode()).hexdigest()
+
+
+tunes_app = Flask(__name__)
+tunes_app.secret_key = os.urandom(32)
+
+#----------------------HOME PAGE-------------------------------
+
+@tunes_app.route("/")
 def root():
-    return render_template('home.html')
-
-@my_app.route("/login", methods =['GET','POST'])
-def login():
-    if 'user' in session:
-        ID = db_func.getID(session['user'])
+    if 'username' in session:
         return redirect(url_for('diary'))
+    return render_template("home.html")
+
+#------------------------LOGIN----------------------------------
+
+@tunes_app.route("/login", methods = ['POST' , 'GET'])
+def login():
+    if 'username' in session:
+        return redirect(url_for('diary'))
+    return render_template("login.html")
+
+@tunes_app.route("/authenticate",methods = ['POST','GET'])
+def authenticate():
+    dbTunes = dbLibrary.openDb("data/tunes.db")
+    cursor = dbLibrary.createCursor(dbTunes)
+    input_username = request.form['username']
+    input_password = request.form['password']
+
+    if input_username=='' or input_password=='' :
+        flash("Please Fill In All Fields")
+        return redirect(url_for('login'))
+
+    if "'" in input_username or "'" in input_password:
+        flash("Invalid Login Info")
+        return redirect(url_for('login'))
+
+    hashed_passCursor = cursor.execute("SELECT password FROM users WHERE username = '" + input_username + "'")
+    numPasses = 0 #should end up being 1 if all fields were filled
+
+    for item in hashed_passCursor:
+        numPasses += 1
+        hashed_pass = item[0]
+        print item[0]
+
+    dbLibrary.closeFile(dbTunes)
+
+    if  numPasses == 0:
+        flash ("User doesn't exist")
+        return redirect(url_for('login'))
+
+    elif check_password(hashed_pass, input_password):
+        flash("Login Successful")
+        session["username"] = input_username;#in order to keep track of user
+        return redirect(url_for('diary'))
+
     else:
-        if (request.method == 'GET'):
-            return render_template('login.html')
-        else:
-            username = request.form["username"]
-            password = request.form["password"]
-            hash_obj = hashlib.sha256(password)
-            hex_dig = hash_obj.hexdigest()
-            status = db_func.validate(username, hex_dig)
-            if status:
-                session["user"] = username
-                return redirect(url_for('diary'))
-            elif db_func.hasUsername(username):
-                flash("Incorrect credentials.")
-            else:
-                flash("Username does not exist.")
-            return redirect(url_for('login'))
-        
-@my_app.route('/register', methods=['GET','POST'])
-def register():
-    if (request.method == 'POST'):
-        username = request.form["newUsername"]
-        password = request.form["newPassword"]
-        repeat = request.form["repeatPassword"]
-        if(password != repeat):
-            flash("Passwords do not match.")
-        else:
-            if db_func.hasUsername(username):
-                flash("Username taken.")
-            else:
-                hash_obj = hashlib.sha256(password)
-                hex_dig = hash_obj.hexdigest()
-                db_func.addUser(username, hex_dig)
-                flash("Your account has been registered.")
-                return redirect(url_for("login"))
+        flash("Invalid Login Information")
+        return redirect(url_for('login'))
+
+
+#-------------------------------------------------------------------
+
+
+
+#---------------CREATING AN ACCOUNT----------------------------------
+@tunes_app.route("/account", methods = ['POST' , 'GET'])
+def account():
     return render_template("register.html")
 
+@tunes_app.route("/accountSubmit", methods = ['POST' , 'GET'])
+def accountSubmit():
+    dbTunes = dbLibrary.openDb("data/tunes.db")
+    cursor = dbLibrary.createCursor(dbTunes)
+    #print request.form
+    username = request.form['newUsername']
+    password = request.form['newPassword']
 
-@my_app.route('/info', methods=['GET','POST'])
-def info():
-    if 'user' in session:
-        return render_template("info.html")
+    if username == '' or password == '':
+        dbLibrary.closeFile(dbTunes)
+        flash("Please Fill In All Fields")
+        return redirect(url_for('account'))
+
+    elif len(password)< 6:
+        dbLibrary.closeFile(dbTunes)
+        flash("Password must have at least 6 characters")
+        return redirect(url_for('account'))
+
+    elif (' ' in username or ' ' in password or "'" in username or "'" in password or '"' in username or '"' in password ):
+        dbLibrary.closeFile(dbTunes)
+        flash("Username and Password cannot contain the space,single quote, or double quote character")
+        return redirect(url_for('account'))
+
+    password = hash_password(password)
+    sameUser = cursor.execute("SELECT username FROM users WHERE username = '" + username +"'")
+
+    counter = 0 #should remain 0 if valid username since username needs to be unique
+    for item in sameUser:
+        counter += 1
+
+    if counter == 0:
+        dbLibrary.insertRow('users',['username', 'password'],[username, password],cursor)
+        flash("Account Successfully Created")
+        dbLibrary.commit(dbTunes)
+        dbLibrary.closeFile(dbTunes)
+        return redirect(url_for('login'))
+
     else:
-        return redirect('login')
+        flash("Invalid: Username taken")
+        dbLibrary.commit(dbTunes)
+        dbLibrary.closeFile(dbTunes)
+        return redirect(url_for('account'))
 
-@my_app.route('/credits', methods=['GET','POST'])
-def credits():
-    if 'user' in session:
-        return render_template("citations.html")
-    else:
-        return redirect('login')
-
-@my_app.route('/diary', methods=['GET','POST'])
-def diary():
-    if 'user' in session:
-        #if method=='post':
-            #display all posts made where the month is equal to the month in the hidden input
-        return render_template("diary.html")#, details
-    else:
-        return redirect('login')
-
-@my_app.route('/create', methods=['GET','POST'])
-def create():
-    if (request.method == 'POST'):
-        entry = request.form["newDiaryEntry"]
-        dict_of_moods = api_library.analyze_tone(entry)
-        #string_top_mood = api_library.primary_mood(dict_of_moods)
-        flash(dict_of_moods)
-    return redirect(url_for('diary'))
-        
-    # if 'user' in session:
-    #     return redirect(url_for("login"));
-    # else:
-    #     return redirect('login')
-
-# @my_app.route('/register', methods=['GET','POST'])
-# def register():
-#     if (request.method == 'POST'):
-#         username = request.form["newUsername"]
-#         password = request.form["newPassword"]
-#         repeat = request.form["repeatPassword"]
-#         if(password != repeat):
-#             flash("Passwords do not match.")
-#         else:
-#             if db_func.hasUsername(username):
-#                 flash("Username taken.")
-#             else:
-#                 hash_obj = hashlib.sha256(password)
-#                 hex_dig = hash_obj.hexdigest()
-#                 db_func.addUser(username, hex_dig)
-#                 flash("Your account has been registered.")
-#                 return redirect(url_for("login"))
-#     return render_template("register.html")
-
-    
-@my_app.route('/statistics', methods=['GET','POST'])
-def statistics():
-    if 'user' in session:
-        return render_template("statistics.html")#, details
-    else:
-        return redirect('login')
-
-    
-@my_app.route('/playlists', methods=['GET','POST'])
-def playlists():
-    if 'user' in session:
-        return render_template("playlists.html")#, details
-    else:
-        return redirect('login')
-
-@my_app.route('/logout', methods=['GET'])
-def logout():
-    if 'user' in session:
-        session.pop('user')
-        flash("Logged out.")
-    return redirect(url_for('login'))
-
-@my_app.route('/callback', methods=['GET'])
-def callback():
-    return redirect(url_for('login'))
-#=======================================================================
+#-----------------------------------------------------------
 
 if __name__ == '__main__':
-    my_app.debug = True
-    my_app.run()
+    tunes_app.debug = True
+    tunes_app.run()
