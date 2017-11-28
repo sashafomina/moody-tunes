@@ -5,16 +5,16 @@ added design doc, made devlog and summary files
 xingtaoS -- 11-15-17 23:15
 copied over db files and app file including login stuff
 
-murphyA -- 11-22-17
+augieM -- 11-22-17
 added templates for home, login, register, and diary
 added style.css
 
-murphyA -- 11-23-17
+augieM -- 11-23-17
 added templates for info, statistics, and citations
 added static folder (contains images and style.css)
 modified app.py to incorporate new methods
 
-murphyA -- 11-24-17
+augieM -- 11-24-17
 removed background images
 modified htmls
 
