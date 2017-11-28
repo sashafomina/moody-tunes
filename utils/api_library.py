@@ -27,7 +27,7 @@ def analyze_tone(diary_entry):
     for d in (tone_results["document_tone"])["tone_categories"][0]["tones"]:
         tone_scores_dict[d["tone_name"]] = d["score"]
         
-    print tone_scores_dict
+    #print tone_scores_dict
     return tone_scores_dict
 
 
@@ -99,8 +99,8 @@ def get_link(song,artist):
 #print get_link("let it be", "the beatles")
 #print  get_child_songs(1, "the night we met", "lord huron")
 #print "\n\n\n"
-d = analyze_tone("i like pie")
-print d
+#d = analyze_tone("i like pie")
+#print d
 #print "\n\n"
 #print primary_tone(d)
 
