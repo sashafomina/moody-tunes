@@ -135,9 +135,9 @@ def diary():
         return redirect(url_for('login'))
     current_user = session["username"]
     
-    dbTunes = dbLibrary.openDb("data/tunes.db")
-    cursor = dbLibrary.createCursor(dbTunes)
-    entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM users WHERE ")
+   #dbTunes = dbLibrary.openDb("data/tunes.db")
+   #cursor = dbLibrary.createCursor(dbTunes)
+   #entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM users WHERE ")
     
     return render_template("diary.html",name = current_user)
 #-----------------------------------------------------------
