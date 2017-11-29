@@ -96,8 +96,27 @@ def get_link(song,artist):
         if ((search_results[i]["artist"]).replace("'", "")).lower() == artist:
             url = search_results[i]["url"]
             return url
+
+#Used for base songs for proper capitalization
+def get_song_proper(song, artist):
+    song_encoded = urllib2.quote(song)
+    link = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=" + song_encoded + "&api_key=" + lastfm_key + "&format=json"
+    u= urllib2.urlopen(link)
+    info = u.read()
+    search_results = json.loads(info)
+
+    search_results = search_results["results"]["trackmatches"]["track"]
+
+    
+    for i in range(3):
+        if ((search_results[i]["artist"]).replace("'", "")).lower() == artist:
+            results = [search_results[i]["name"],search_results[i]["artist"]]
+            return results
+            
+    
     
 #TEST CASES ------------------------------
+print get_song_proper("let it be" , "the beatles")
 #print get_link("let it be", "the beatles")
 #print  get_child_songs(1, "the night we met", "lord huron")
 #print "\n\n\n"
