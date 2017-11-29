@@ -137,9 +137,12 @@ def diary():
     entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM diary WHERE username = '" + current_user + "';")
     entries = cursor.fetchall()
 
-   
+    song_artist_cursor = cursor.execute("SELECT diary.song, artist FROM diary,songs WHERE username = '" + current_user+ "' and songs.song=diary.song;")
+
+    artists = []
+    for item in song_artist_cursor:
+        artists.append(item[1])
             
-    print entries
 
     
     dbLibrary.closeFile(dbTunes)
@@ -178,11 +181,11 @@ def create():
 
     if recent_song == "base":
         song_rec_cursor = cursor.execute("SELECT song FROM songs WHERE parentSong = 'base' and mood = '" + max_mood + "';")
+        song_rec = ""
         for item in song_rec_cursor:
             for song in item:
                 song_rec = song
-        song_rec
-        dbLibrary.update("users", max_mood, "'" + song_rec + "'", "username = '" + current_user + "'", cursor)
+            dbLibrary.update("users", max_mood, "'" + song_rec + "'", "username = '" + current_user + "'", cursor)
 
    
     else:

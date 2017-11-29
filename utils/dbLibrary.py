@@ -67,9 +67,9 @@ if __name__ == "__main__":
     table_gen(c)
 
     #filling in some sad songs in the songs table
-    insertRow("songs",['song', 'artist', 'mood','one', 'parentSong'], ["let it be", "the beatles", "sad" ,"im not the only one" , "base"],c)
-    insertRow("songs", ['song', 'artist', 'mood','two','parentSong'], ["im not the only one", "sam smith", "sad","she will be loved", "let it be"],c)
-    insertRow("songs", ['song', 'artist', 'mood', 'parentSong'], ["she will be loved", "maroon 5", "sad", "im not the only one"],c)
+    insertRow("songs",['song', 'artist', 'mood','one', 'parentSong'], ["let it be", "the beatles", "sadness" ,"im not the only one" , "base"],c)
+    insertRow("songs", ['song', 'artist', 'mood','two','parentSong'], ["im not the only one", "sam smith", "sadness","she will be loved", "let it be"],c)
+    insertRow("songs", ['song', 'artist', 'mood', 'parentSong'], ["she will be loved", "maroon 5", "sadness", "im not the only one"],c)
 
     #filling in some happy songs in the songs table
     insertRow("songs",['song', 'artist', 'mood','one', 'parentSong'], ["uptown funk", "mark ronson", "joy" ,"different colors" , "base"],c)
