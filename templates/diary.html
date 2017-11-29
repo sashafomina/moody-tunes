@@ -26,20 +26,21 @@
 <body>
   <header>
     <!-- heading !-->
-    <div class="blog-masthead">
+
+    <div class="blog-header">
+      <div class="container">
+	<h1 class="blog-title">{{name}}'s Moody Journal</h1>
+	<p class="lead blog-description">Brief description of what your moody-tunes journal is...</p>
+      </div>
+    </div>
+	
+	<div class="blog-masthead">
       <div class="row-10">
 	<nav class="nav">
 	  <a class="nav-link active" href="/">Home</a>
 	  <a class="nav-link" href="statistics">Statistics</a>
 	  <a class="nav-link" href="playlists">Playlists</a>
 	</nav>
-      </div>
-    </div>
-
-    <div class="blog-header">
-      <div class="container">
-	<h1 class="blog-title">{{name}}'s Moody Journal</h1>
-	<p class="lead blog-description">Brief description of what your moody-tunes journal is...</p>
       </div>
     </div>
   </header>
@@ -65,7 +66,7 @@
 	<!-- entries will be a list of lists [[date1, entry1] !-->
 	<h3>Read Stories</h3>
 	{% for data in diary %}
-	<div class="card-group">
+	<div id="{{data[2]}}" class="card-group">
 	  <div class="card">
 	    
 	    <div class="card-block">
@@ -83,6 +84,9 @@
 	    </div>
 	  </div>
 	</div>
+	<br>
+	<br>
+	<br>
 	{% endfor %}
       </div>
       
@@ -91,22 +95,18 @@
 
 	<!-- about this journal or something !-->
 	<div class="sidebar-module sidebar-module-inset">
-	  <h4>something</h4>
-	  <p>
-	    all about something idk man write something here if we're colorcoding, this is what the colors mean
-	  </p>
+	  <h4>Your Entries</h4>
 	</div>
 
 	<!-- archive !-->
 	<div class="sidebar-module">
 	  <h4>History</h4>
 	  <ol class="list-unstyled">
-	    <form method='post'>
-	      <li><a href="diary"><input type="hidden" month="nov"></input>November</a></li>
-	      <li><a href="diary"><input type="hidden" month="oct"></input>October</a></li>
-	      <li><a href="diary"><input type="hidden" month="sep"></input>September</a></li>
-	      <li><a href="diary"><input type="hidden" month="aug"></input>Augustr</a></li>
+		{% for data in diary %}
+	    <form method='Post'>
+	      <li><a href="#{{data[2]}}"><input type="hidden" month="nov"></input>{{data[2]}}</a></li
 	    </form>
+		{% endfor %}
 	  </ol>
 	</div>
       </aside>
