@@ -3,8 +3,8 @@ import random
 from requests.auth import HTTPBasicAuth
 
 keyfile = open("keys.txt", "r")
-lastfm_key = keyfile.readline().replace("\n", "")
-ibm_user = keyfile.readline().replace("\n", "")
+lastfm_key = keyfile.readline().replace("\n", "").replace("\r", "")
+ibm_user = keyfile.readline().replace("\n", "").replace("\r", "")
 ibm_pass = keyfile.readline()
 print lastfm_key
 
