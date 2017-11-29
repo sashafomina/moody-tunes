@@ -18,6 +18,9 @@ augieM -- 11-24-17 12:13
 removed background images
 modified htmls
 
+sashaF -- 11-26-17
+Added api library of functions
+
 xingtaoS -- 11-26-17 19:50
 fixed db_func error: replaced db_func
 added usability w/ utils folder
@@ -27,4 +30,23 @@ made create route
 fixed some bugs
 fixed html form
 
+sashaF -- 11-26-17
+Fixed ibm issue
 
+sashaF -- 11-26-17 8:44
+Fixed login and register
+
+sashaF -- 11-26-17 11:45
+Worked on viewing entries
+
+sashaF -- 11-26-17 13:25
+Worked on stuff
+
+sashaF -- 11-26-17 13:34
+debugging (fixed minor error)
+
+sashaF -- 11-26-17 14:05
+Worked on create
+
+sashaF -- 11-26-17 17:21
+Worked on create some more
