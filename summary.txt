@@ -8,3 +8,4 @@ out of time and it required learning new css.
 - removed random spotify playlist from home page
 - added an about us and apis page link to the home screen
 - added list of entries as a sidebar to the diary page with shortcut links to each entry
+- most recent entries are now last
