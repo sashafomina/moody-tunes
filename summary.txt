@@ -1,0 +1,10 @@
+changes Made to design doc:
+- changed music api from spotify to last.fm because whoever made the spotify entry in the api knowledge bank didn't realize it's
+not a REST api
+- scrapped the statistics page because it wasn't a feature necessary for the main idea of the app, and because we were running
+out of time and it required learning new css.
+- changed the db structure to support a 3 star song rating system, but didn't implement the rating system because of time
+- changed various file names
+- removed random spotify playlist from home page
+- added an about us and apis page link to the home screen
+- added list of entries as a sidebar to the diary page with shortcut links to each entry
