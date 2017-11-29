@@ -50,3 +50,8 @@ Worked on create
 
 sashaF -- 11-26-17 17:21
 Worked on create some more
+
+xingtaoS -- 11-28-17 23:57
+added button from register to login
+created cards template
+fixed centering issues

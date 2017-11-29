@@ -140,7 +140,6 @@ def diary():
     entries = cursor.fetchall()
     
     return render_template("diary.html",name = current_user, diary = entries)
-#-----------------------------------------------------------
 
 #---------------CREATING A NEW ENTRY----------------------
 @tunes_app.route("/create", methods = ['POST' , 'GET'])
@@ -207,10 +206,6 @@ def create():
 
     dbLibrary.commit(dbTunes)
     dbLibrary.closeFile(dbTunes)
-   
-     
-    
-
 
     
     return redirect(url_for("diary"))
