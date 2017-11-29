@@ -53,8 +53,9 @@ Worked on create some more
 
 xingtaoS -- 11-28-17 23:57
 added button from register to login
+added buttons from register and login to home
 created cards template
 fixed centering issues
-made button css
-logout
-radio buttons
+made logout route
+made radio buttons css
+created aboutus page and api's used page

@@ -222,6 +222,15 @@ def logout():
         flash("Logged out.")
     return redirect(url_for("root"))
 
+#---------------------MISC-------------------------------
+@tunes_app.route('/info', methods=['GET'])
+def info():
+    return render_template("info.html")
+
+@tunes_app.route('/credits', methods=['GET'])
+def credits():
+    return render_template("credits.html")
+
 #--------------------------------------------------------
 if __name__ == '__main__':
     tunes_app.debug = True
