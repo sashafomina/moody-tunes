@@ -23,7 +23,7 @@ To view the website, navigate to localhost:5000 in your browser. Make an account
 - <a href = "http://docs.python-requests.org/en/master/user/install/"> python requests module </a>: use pip install
   
 
-**Known Bugs***
+**Known Bugs**
 - The database sometimes doesn't commit and close correctly
 - Using single or double quotes in a diary entry can break the system
 
