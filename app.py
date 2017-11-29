@@ -139,8 +139,12 @@ def diary():
     entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM diary WHERE username = '" + current_user + "';")
     entries = cursor.fetchall()
 
-    #print entries
+   
+            
+    print entries
+
     
+    dbLibrary.closeFile(dbTunes)
     return render_template("diary.html",name = current_user, diary = entries)
 
 #---------------CREATING A NEW ENTRY----------------------
