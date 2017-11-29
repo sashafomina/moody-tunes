@@ -22,7 +22,7 @@ def analyze_tone(diary_entry):
 
     tone_scores_dict = {}
     
-    print tone_results
+    #print tone_results
 
     for d in (tone_results["document_tone"])["tone_categories"][0]["tones"]:
         tone_scores_dict[d["tone_name"]] = d["score"]
@@ -60,13 +60,13 @@ def get_child_songs(num_stars, song, artist):
 
     child_song = []
     
-    if num_stars == 1:
+    if num_stars == "one":
         rand_num = random.randint(0,32)
         
-    if num_stars == 2:
+    if num_stars == "two":
         rand_num = random.randint(33,66)
 
-    if num_stars == 3:
+    if num_stars == "three":
         rand_num = random.randint(67,99)
 
     child_song.append(similiar_tracks_dict["similartracks"]["track"][rand_num]["name"])

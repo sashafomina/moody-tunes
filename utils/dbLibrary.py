@@ -51,8 +51,8 @@ def table_gen(c):
     #sad, joy, angry/disgust, fear are the most recent song recommendation for this user for each mood
     create_users = "CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT,sadness TEXT, joy TEXT, anger TEXT,fear TEXT);"
     
-    #mood will be a dictionary, song rating is either 1,2,3 (2 by default)
-    create_diary = "CREATE TABLE IF NOT EXISTS diary(username TEXT, date TEXT, entry TEXT, mood TEXT, song TEXT, songRating INTEGER);"
+    #mood will be a dictionary, song rating is either one,two,three (two by default)
+    create_diary = "CREATE TABLE IF NOT EXISTS diary(username TEXT, date TEXT, entry TEXT, mood TEXT, song TEXT, songRating TEXT);"
 
     #for base songs the parentSong field will contain "base"
     create_songs = "CREATE TABLE IF NOT EXISTS songs(song TEXT,artist TEXT, mood TEXT, one TEXT, two TEXT, three TEXT, parentSong TEXT);"
@@ -87,6 +87,7 @@ if __name__ == "__main__":
     insertRow("songs",['song', 'artist', 'mood','one', 'parentSong'], ["revolution", "the beatles", "anger" ,"till i collapse" , "smells like teen spirit"],c)
     insertRow("songs",['song', 'artist', 'mood','one','parentSong'], ["till i collapse", "eminem", "anger","we will rock you", "revolution"],c)
     insertRow("songs",['song', 'artist', 'mood', 'parentSong'], ["we will rock you", "queen", "anger","till i collapse"],c)
+
 
     commit(db)
     closeFile(db)

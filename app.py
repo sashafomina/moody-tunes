@@ -144,27 +144,56 @@ def create():
     if 'username' not in session:
         flash("Session timed out")
         return redirect(url_for('login'))
+    current_user = session["username"] 
 
     new_entry = request.form['newDiaryEntry']
 
-    d_tone = analyze_tone(new_entry)
+    d_tone = api_library.analyze_tone(new_entry)
 
-    max_mood = (primary_tone(d_tone)).lower()
+    max_mood = (api_library.primary_tone(d_tone)).lower()
+    #print max_mood
 
     dbTunes = dbLibrary.openDb("data/tunes.db")
     cursor = dbLibrary.createCursor(dbTunes)
 
-    recent_song = cursor.execute("SELECT " + max_mood + " FROM users;")
+    recent_song_cursor = cursor.execute("SELECT " + max_mood + " FROM users;")
+    for item in recent_song_cursor:
+        recent_song = item
+
+    recent_song = recent_song[0]
+
+
+    #print recent_song == "base"      
+    #print recent_song
 
     if recent_song == "base":
-        song_rec_cursor = cursor.execute("SELECT song, artist FROM songs WHERE parentSong = base") 
-    
+        song_rec_cursor = cursor.execute("SELECT song FROM songs WHERE parentSong = 'base' and mood = '" + max_mood + "';")
+        for item in song_rec_cursor:
+            for song in item:
+                song_rec = song
+
+    else:
+        rating_cursor = cursor.execute("SELECT songRating FROM diary WHERE username = '" + current_user + "' and song = '" + recent_song + "' and mood = '" + max_mood + "';" )
+        for item in rating_cursor:
+            rating = item[0]
+
+        song_rec_cursor =  cursor.execute("SELECT " + rating + " FROM songs WHERE mood = '" + max_mood + "' and song = '" + recent_song + "';");
+        for item in song_rec_cursor:
+            song_rec = item[0]
+            #print final
+        if song_rec == null:
+            artist_cursor = cursor.execute("SELECT artist FROM songs WHERE song = '" + recent_song + "';")
+            for item in artist_cursor:
+                artist = item[0]
+            song_rec_list = api_library.get_child_songs(rating, recent_song, artist)
+   
     
     
 
   
-    insertRow("diary", ["username", "date" "entry" , "mood" ,"song", "songRating"] , )
+    #insertRow("diary", ["username", "date" "entry" , "mood" ,"song", "songRating"] , )
     
+    return "hi"
 
 
 
