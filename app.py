@@ -133,7 +133,6 @@ def diary():
         flash("Session timed out")
         return redirect(url_for('login'))
     current_user = session["username"]
-
     dbTunes = dbLibrary.openDb("data/tunes.db")
     cursor = dbLibrary.createCursor(dbTunes)
     entry_cursor = cursor.execute("SELECT entry,mood, date, song, songRating FROM diary WHERE username = '" + current_user + "';")
@@ -215,10 +214,15 @@ def create():
     
     return redirect(url_for("diary"))
 
-
+#---------------------LOGGING OUT------------------------
+@tunes_app.route('/logout', methods=['GET'])
+def logout():
+    if 'username' in session:
+        session.pop('username')
+        flash("Logged out.")
+    return redirect(url_for("root"))
 
 #--------------------------------------------------------
-
 if __name__ == '__main__':
     tunes_app.debug = True
     tunes_app.run()
