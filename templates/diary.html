@@ -65,20 +65,22 @@
 	<!-- entries will be a list of lists [[date1, entry1] !-->
 
 	{% for data in diary %}
-	<div id="{{data[2]}}" class="card-group">
+	<div id="{{data[4]}}" class="card-group">
 	  <div class="card">
 	    
 	    <div class="card-block">
-	      <h4 class="card-title">{{data[2]}}</h4>
-	      <p class="card-text">{{data[0]}}.</p>
+	      <h4 class="card-title">{{data[4]}}</h4>
+	      <p class="card-text">{{data[2]}}.</p>
 	      
 	    </div>
 	  </div>
 	  <div class="card">
 	    
 	    <div class="card-block">
-	      <h4 class="card-title">Mood: {{data[1]}}</h4>
-	      <p class="card-text">Song: {{data[3]}}</p>
+	      <h4 class="card-title">We think you're feeling: {{data[3]}}</h4>
+	      <p class="card-text">Song: {{data[5]}}</p>
+		  <p class="card-text">Artist: {{data[0]}}</p>
+		  <p class="card-text">Listen to the song <a href= "{{data[1]}}" >here!</a></p>
 	      
 	    </div>
 	  </div>
@@ -101,7 +103,7 @@
 	  <ol class="list-unstyled">
 		{% for data in diary %}
 	    <form method='Post'>
-	      <li><a href="#{{data[2]}}"><input type="hidden" month="nov"></input>{{data[2]}}</a></li
+	      <li><a href="#{{data[4]}}"><input type="hidden" ></input>{{data[4]}}</a></li>
 	    </form>
 		{% endfor %}
 	  </ol>

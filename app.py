@@ -139,14 +139,30 @@ def diary():
 
     song_artist_cursor = cursor.execute("SELECT diary.song, artist FROM diary,songs WHERE username = '" + current_user+ "' and songs.song=diary.song;")
 
-    artists = []
+    info = []
     for item in song_artist_cursor:
-        artists.append(item[1])
+        sublist= []
+        sublist.append(item[1])
+        sublist.append(api_library.get_link(item[0],item[1]))
+        info.append(sublist)
+    counter = 0
+    for data in info:
+        subCounter = 0
+        for stuff in entries:
+            if counter == subCounter:
+                data.append(stuff[0]) #entry index 2
+                data.append(stuff[1]) #mood 3
+                data.append(stuff[2]) #date 4
+                data.append(stuff[3]) #song 5
+                data.append(stuff[4])  #rating 6
+            subCounter += 1
+        counter += 1
+                
             
-
+    print info
     
     dbLibrary.closeFile(dbTunes)
-    return render_template("diary.html",name = current_user, diary = entries)
+    return render_template("diary.html",name = current_user, diary = info)
 
 #---------------CREATING A NEW ENTRY----------------------
 @tunes_app.route("/create", methods = ['POST' , 'GET'])

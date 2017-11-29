@@ -91,11 +91,15 @@ def get_link(song,artist):
 
     search_results = search_results["results"]["trackmatches"]["track"]
 
+    print artist.upper()
     
-    for i in range(3):
-        if ((search_results[i]["artist"]).replace("'", "")).lower() == artist:
+    for i in range(0,29):
+        print ((search_results[i]["artist"]).replace("'", "")).lower()
+        if ((search_results[i]["artist"]).replace("'", "")).lower() ==artist.lower():
             url = search_results[i]["url"]
             return url
+        
+    return "/diary"
 
 #Used for base songs for proper capitalization
 def get_song_proper(song, artist):
