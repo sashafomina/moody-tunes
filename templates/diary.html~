@@ -30,6 +30,7 @@
     <div class="blog-header">
       <div class="container">
 	<h1 class="blog-title">{{name}}'s Moody Journal</h1>
+	<p class="lead blog-description">Brief description of what your moody-tunes journal is...</p>
       </div>
     </div>
 	
@@ -37,8 +38,8 @@
       <div class="row-10">
 	<nav class="nav">
 	  <a class="nav-link active" href="/">Home</a>
-	  
-	  <a class="nav-link" href="logout">Logout</a>
+	  <a class="nav-link" href="statistics">Statistics</a>
+	  <a class="nav-link" href="playlists">Playlists</a>
 	</nav>
       </div>
     </div>
@@ -56,14 +57,14 @@
 	  <form class = "form-group" method = "POST"  action="/create">
 	    <legend>New Diary Entry</legend>
 	    <!--<input style="height:200px; word-wrap: break-all;" class ="form-control" type ="text" name = "newDiaryEntry" required> <br>!-->
-	    <textarea class="form-control" id="exampleTextarea" rows="5" name = "newDiaryEntry" required></textarea>
+	    <textarea class="form-control" id="exampleTextarea" rows="5" name = "newDiaryEntry"></textarea>
 	    <input class="btn-block" type="submit" value="Create">
 	  </form>
 	</div>
 
 	<!-- display previous entries accordian-style !-->
 	<!-- entries will be a list of lists [[date1, entry1] !-->
-	<h3>Read Entries</h3>
+	<h3>Read Stories</h3>
 	{% for data in diary %}
 	<div id="{{data[2]}}" class="card-group">
 	  <div class="card">

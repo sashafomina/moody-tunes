@@ -22,6 +22,7 @@
     <h3> {{message}} </h3>
     
     {% endfor %}
+
     
     <div class="container-fluid">
       <h1>MoodyTunes</h1>
@@ -30,20 +31,24 @@
     <!-- navbar !-->
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
       <a class="navbar-brand" href="/">Home</a>
-      <a class="nav-item nav-link" href="credits" >APIs/Credits</a>
+      <a class="nav-item nav-link" href="info" >About Us</a>
     </nav>
   </head>
 
+    
+  </head>
   <body>
-    <div>
-      <br>
-      <h1>About Us</h1>
-      <h3>Team MoodyTunes</h3>
-      Md Abedin - <i> project manager </i><br>
-      Sasha Fomina <br>
-      Xing Tao Shi <br>
-      Augie Murphy <br>
-      
-    </div>
+    <!-- main content !-->
+    <br>
+    <h1>APIs Used</h1><br>
+    <h3>IBMWatson Tone Analyzer</h3>
+    <a href = "https://www.ibm.com/watson/services/tone-analyzer/"> Link to their webpage </a><br>
+    This api takes a String and returns a json consisting of the different types of moods that are expressed in your writing. <br> We analyzed diary entries to figure out what was the primary mood.
+    
+    <br><br>
+    <h3>LastFM</h3>
+    <a href = "https://www.last.fm/api"> Link to their webpage </a><br>
+    This api gives you music and can also give you music similar to a song you like. <br> We used this feature with our rating feature which returns increasing similar music based on how much you liked the previous song.
+    
   </body>
 </html>

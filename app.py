@@ -21,8 +21,6 @@ tunes_app.secret_key = os.urandom(32)
 
 @tunes_app.route("/")
 def root():
-    if 'username' in session:
-        return redirect(url_for('diary'))
     return render_template("home.html")
 
 #------------------------LOGIN----------------------------------
@@ -183,6 +181,7 @@ def create():
         for item in song_rec_cursor:
             for song in item:
                 song_rec = song
+        song_rec
         dbLibrary.update("users", max_mood, "'" + song_rec + "'", "username = '" + current_user + "'", cursor)
 
    
@@ -219,7 +218,23 @@ def create():
     
     return redirect(url_for("diary"))
 
+#---------------------MISC-------------------------------
+@tunes_app.route('/info', methods=['GET'])
+def info():
+    return render_template("info.html")
 
+@tunes_app.route('/credits', methods=['GET'])
+def credits():
+    return render_template("credits.html")
+#--------------------------------------------------------
+
+#---------------------LOGGING OUT------------------------
+@tunes_app.route('/logout', methods=['GET'])
+def logout():
+    if 'username' in session:
+        session.pop('username')
+        flash("Logged out.")
+    return redirect(url_for("root"))
 
 #--------------------------------------------------------
 
