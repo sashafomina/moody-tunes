@@ -6,7 +6,6 @@
     
     <!-- custom style for website !-->
     <link rel="stylesheet" type="text/css" href="../static/style.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/radio.css"/>
     
     <title>Diary</title>
 
@@ -41,7 +40,6 @@
 	  <a class="nav-link active" href="/">Home</a>
 	  <a class="nav-link" href="statistics">Statistics</a>
 	  <a class="nav-link" href="playlists">Playlists</a>
-	  <a class="nav-link" href="logout">Logout</a>
 	</nav>
       </div>
     </div>
@@ -67,7 +65,6 @@
 	<!-- display previous entries accordian-style !-->
 	<!-- entries will be a list of lists [[date1, entry1] !-->
 	<h3>Read Stories</h3>
-
 	{% for data in diary %}
 	<div id="{{data[2]}}" class="card-group">
 	  <div class="card">
@@ -83,19 +80,6 @@
 	    <div class="card-block">
 	      <h4 class="card-title">Mood: {{data[1]}}</h4>
 	      <p class="card-text">Song: {{data[3]}}</p>
-	      
-	      <label class="container">One
-		<input type="radio" checked="checked" name="radio">
-		<span class="checkmark"></span>
-	      </label>
-	      <label class="container">Two
-		<input type="radio" name="radio">
-		<span class="checkmark"></span>
-	      </label>
-	      <label class="container">Three
-		<input type="radio" name="radio">
-		<span class="checkmark"></span>
-	      </label>
 	      
 	    </div>
 	  </div>
