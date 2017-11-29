@@ -64,32 +64,53 @@
 	<!-- display previous entries accordian-style !-->
 	<!-- entries will be a list of lists [[date1, entry1] !-->
 	<h3>Read Stories</h3>
-	<form method="post" action="/view">
-	  <div id="accordion" role="tablist" aria-multiselectable="true">
-	    {% for details in view %}
-	    <div class="card blog-post">
-	      <div class="card-header" role="tab" id="headingOne">
-		<h2 class="card-header blog-post-title" role="tab">
-		  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		    {{details[0]}}
-		  </a>
-		</h2>
-	      </div>
+	<!--
+	    <form method="post" action="/view">
+	      <div id="accordion" role="tablist" aria-multiselectable="true">
+		{% for details in view %}
+		<div class="card blog-post">
+		  <div class="card-header" role="tab" id="headingOne">
+		    <h2 class="card-header blog-post-title" role="tab">
+		      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			{{details[0]}}
+		      </a>
+		    </h2>
+		  </div>
 
-	      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-		<div class="card-block">
-		  {{details[1]}}
+		  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+		    <div class="card-block">
+		      {{details[1]}}
+		    </div>
+		  </div>
+		  <button name="storyID" value={{details[0]}}>
+		    <b>{{details[1]}}</b>
+		    <br>Your Edit: {{details[2]}}
+		  </button>
 		</div>
+		{% endfor %}
 	      </div>
-	      <button name="storyID" value={{details[0]}}>
-		<b>{{details[1]}}</b>
-		<br>Your Edit: {{details[2]}}
-	      </button>
-	    </div>
-	    {% endfor %}
-	  </div>
       </div>
+      !-->
+	
+	<div class="card-group">
+	  <div class="card">
 
+	    <div class="card-block">
+	      <h4 class="card-title">Date</h4>
+	      <p class="card-text">Entry.</p>
+
+	    </div>
+	  </div>
+	  <div class="card">
+
+	    <div class="card-block">
+	      <h4 class="card-title">Mood: insert mood here :)</h4>
+	      <p class="card-text">Song: insert song here</p>
+
+	    </div>
+	  </div>
+	</div>
+      </div>
       
       <!-- sidebar !-->
       <aside class="col-sm-3 ml-sm-auto blog-sidebar">
@@ -115,7 +136,7 @@
 	  </ol>
 	</div>
       </aside>
- 
+      
   </main>
 
 </body>
