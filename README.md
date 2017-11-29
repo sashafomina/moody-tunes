@@ -7,7 +7,7 @@ Team moody tune's softdev project #2. Our project is a virtual diary that you ca
 
 **Instructions:**
 
-First, clone the repo locally. Then, First, move the "keys.txt" file into the root of the repo. You can get your own API keys by checking the links in the dependencies section. You also need python, flask, and requests in order to run this app, which is also explained in the dependencies section. Once all dependencies are set up, you can  launch the website on localhost by running the command
+First, clone the repo locally. Then,create a "keys.txt" file containing "<Lastfm key>\n<ibmUsername>\n<ibmPassword>" and move the "keys.txt" file into the root of the repo. You can get your own API keys by checking the links in the dependencies section. You also need python, flask, and requests in order to run this app, which is also explained in the dependencies section. Once all dependencies are set up, you can  launch the website on localhost by running the command
 
 ```
 $ python app.py
