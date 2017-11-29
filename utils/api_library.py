@@ -59,6 +59,8 @@ def get_child_songs(num_stars, song, artist):
     similiar_tracks_dict = json.loads(info)
 
     child_song = []
+
+    rand_num = 0
     
     if num_stars == "one":
         rand_num = random.randint(0,32)

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os, csv, sqlite3, hashlib, uuid
+from datetime import datetime
 from utils import api_library, dbLibrary
+import json
 
 
 def hash_password(password):
@@ -156,7 +158,7 @@ def create():
     dbTunes = dbLibrary.openDb("data/tunes.db")
     cursor = dbLibrary.createCursor(dbTunes)
 
-    recent_song_cursor = cursor.execute("SELECT " + max_mood + " FROM users;")
+    recent_song_cursor = cursor.execute("SELECT " + max_mood + " FROM users WHERE username ='" + current_user +"';")
     for item in recent_song_cursor:
         recent_song = item
 
@@ -171,7 +173,9 @@ def create():
         for item in song_rec_cursor:
             for song in item:
                 song_rec = song
+        dbLibrary.update("users", max_mood, "'" + song_rec + "'", "username = '" + current_user + "'", cursor)
 
+   
     else:
         rating_cursor = cursor.execute("SELECT songRating FROM diary WHERE username = '" + current_user + "' and song = '" + recent_song + "' and mood = '" + max_mood + "';" )
         for item in rating_cursor:
@@ -180,18 +184,32 @@ def create():
         song_rec_cursor =  cursor.execute("SELECT " + rating + " FROM songs WHERE mood = '" + max_mood + "' and song = '" + recent_song + "';");
         for item in song_rec_cursor:
             song_rec = item[0]
-            #print final
-        if song_rec == null:
-            artist_cursor = cursor.execute("SELECT artist FROM songs WHERE song = '" + recent_song + "';")
-            for item in artist_cursor:
-                artist = item[0]
+            #print song_rec
+
+        artist_cursor = cursor.execute("SELECT artist FROM songs WHERE song = '" + recent_song + "';")
+        for item in artist_cursor:
+            artist = item[0]
+            
+        if song_rec is None:
             song_rec_list = api_library.get_child_songs(rating, recent_song, artist)
-   
+            song_rec =  song_rec_list[0] 
+            new_artist = song_rec_list[1]
+            dbLibrary.insertRow("songs" , ['song','artist','mood','parentSong'], [song_rec, new_artist, max_mood, recent_song], cursor)
+
     
     
 
-  
-    #insertRow("diary", ["username", "date" "entry" , "mood" ,"song", "songRating"] , )
+    datetime2 = str(datetime.now())[0:-7]#date and time (w/o milliseconds)
+    
+    dbLibrary.insertRow("diary" , ["username" , "date" , "entry" , "mood" , "song" , "songRating"] , [current_user ,datetime2, new_entry, max_mood, song_rec, "two"], cursor)
+
+    dbLibrary.commit(dbTunes)
+    dbLibrary.closeFile(dbTunes)
+   
+     
+    
+
+
     
     return "hi"
 
