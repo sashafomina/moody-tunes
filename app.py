@@ -156,6 +156,9 @@ def create():
     max_mood = (api_library.primary_tone(d_tone)).lower()
     #print max_mood
 
+    if max_mood == "disgust":
+        max_mood = "anger"
+
     dbTunes = dbLibrary.openDb("data/tunes.db")
     cursor = dbLibrary.createCursor(dbTunes)
 
