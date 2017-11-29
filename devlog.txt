@@ -56,3 +56,59 @@ added button from register to login
 created cards template
 fixed centering issues
 made button css
+
+sashaF -- 11-29-17 0:05
+Finished create so that it appropriately adds songs to database based on a rating system
+
+xingtaoS - 11-29-17 0:10
+fixed centering issues 
+
+mdA - 11-29-17 0:30
+fixed some merge conflicts
+got new entries to show, bugs present
+
+sashaF - 11-29-17 1:03
+fixed disgust bug when viewing diary entries 
+added side bar with links by date to each entry 
+
+xingtaoS - 11-29-17 1:10
+styled buttons and got rid of filler text
+
+sashaF - 11-29-17 1:23
+added fxn song proper in api lib that would fix capitilization
+
+xingtaoS - 11-29-17 1:40
+added radio buttons for implementation of rating system, many styling bugs
+added logout, and back buttons to login and register
+
+mdA - 11-29-17 2:05
+got rid of radio buttons because it completely messed up styling of diary page 
+
+sashaF - 11-29-17 2:07
+fixed on diary page styling
+
+mdA - 11-29-17 2:15
+fixed bunch of bugs 
+deleted unimplemented features from display
+
+sashaF - 11-29-17 2:34
+fixed bugs in viewing entries and fixed a template styling of login and diary
+
+mdA - 11-29-17 3:02
+updated readme
+
+sashaF 11-29-17 3:40
+added feature to viewing entires that shows artist and url of song 
+
+mdA 11-29-17 8:17
+deleted our keys from public github repo and added code to fascilitate reading of keys.txt
+
+mdA 11-29-17 2:37
+fixed newline bug
+
+sashaF 11-29-17 4:11
+updated readme with keys instruction
+updated devlog
+
+
+
