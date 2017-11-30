@@ -67,13 +67,13 @@ def get_child_songs(num_stars, song, artist):
     rand_num = 0
     
     if num_stars == "one":
-        rand_num = random.randint(0,32)
+        rand_num = random.randint(31,99)
         
     if num_stars == "two":
-        rand_num = random.randint(33,66)
+        rand_num = random.randint(6,30)
 
     if num_stars == "three":
-        rand_num = random.randint(67,99)
+        rand_num = random.randint(0,5)
 
     child_song.append(similiar_tracks_dict["similartracks"]["track"][rand_num]["name"])
     child_song.append(similiar_tracks_dict["similartracks"]["track"][rand_num]["artist"]["name"])
