@@ -1,6 +1,7 @@
 a {
     text: 10px Times;
     color: black;
+	font-weight:bold;
 }
 
 
@@ -131,6 +132,11 @@ main {
     padding:15px;
     font-size:15px;
     box-sizing:border-box;
+}
+
+#music:hover{
+	background-color: darkseagreen;
+	color:white;
 }
 
 

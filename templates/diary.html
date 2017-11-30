@@ -6,6 +6,8 @@
     
     <!-- custom style for website !-->
     <link rel="stylesheet" type="text/css" href="../static/style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <title>Diary</title>
 
@@ -80,8 +82,23 @@
 	      <h4 class="card-title">We think you're feeling: {{data[3]}}</h4>
 	      <p class="card-text">Song: {{data[5]}}</p>
 		  <p class="card-text">Artist: {{data[0]}}</p>
-		  <p class="card-text">Listen to the song <a href= "{{data[1]}}" >here!</a></p>
-	      
+		  <p class="card-text">Listen to the song <a style= "font-weight:bold;" href= "{{data[1]}}" >here!</a></p>
+		  <p style = "text-decoration:underline;">Rate this song: Do you vibe with it?
+			<form method="POST" action = "/rate">
+			  <div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-primary {{data[6][0]}}">
+					<input value="one" type="radio" name="options" id="option1" autocomplete="off" {{data[7][0]}}> 1 star
+				  </label>
+				  <label class="btn btn-primary {{data[6][1]}}">
+					<input value = "two" type="radio" name="options" id="option2" autocomplete="off" {{data[7][1]}}> 2 stars
+				  </label>
+				  <label class="btn btn-primary {{data[6][2]}}">
+					<input value ="three" type="radio" name="options" id="option3" autocomplete="off" {{data[7][2]}}> 3 stars
+				  </label>
+				</div>
+				<input class="btn btn-secondary btn-sm" type="submit" value="Save rating">
+			</form>
+			</p>
 	    </div>
 	  </div>
 	</div>

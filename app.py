@@ -146,6 +146,7 @@ def diary():
         sublist.append(api_library.get_link(item[0],item[1]))
         info.append(sublist)
     counter = 0
+
     for data in info:
         subCounter = 0
         for stuff in entries:
@@ -154,12 +155,23 @@ def diary():
                 data.append(stuff[1]) #mood 3
                 data.append(stuff[2]) #date 4
                 data.append(stuff[3]) #song 5
-                data.append(stuff[4])  #rating 6
+                if stuff[4] == "two": #rate 6
+                    data.append(["", "active" , ""])
+                    data.append(["", "checked" , ""])
+                elif stuff[4] == "one":
+                    data.append(["active", "", ""])
+                    data.append(["checked", "" , ""])
+                else:
+                    data.append(["", "", "active"])
+                    data.append(["", "" , "checked"])
+                 
             subCounter += 1
         counter += 1
                 
             
     print info
+
+    
     
     dbLibrary.closeFile(dbTunes)
     return render_template("diary.html",name = current_user, diary = info)
@@ -237,6 +249,23 @@ def create():
     
     return redirect(url_for("diary"))
 
+#------------------RATE---------------------------------
+@tunes_app.route("/rate" , methods = ['GET' , 'POST'])
+def rate():
+    dbTunes = dbLibrary.openDb("data/tunes.db")
+    cursor = dbLibrary.createCursor(dbTunes)
+
+    current_user = session["username"]
+    new_rating = "'" + request.form['options'] + "'"
+
+    dbLibrary.update("diary", "songRating", new_rating, "username = '" + current_user + "'", cursor)  
+
+    dbLibrary.commit(dbTunes)
+    dbLibrary.closeFile(dbTunes)
+
+    return redirect(url_for("diary"))
+#--------------------------------------------------------
+
 #---------------------MISC-------------------------------
 @tunes_app.route('/info', methods=['GET'])
 def info():
@@ -244,6 +273,7 @@ def info():
 
 @tunes_app.route('/credits', methods=['GET'])
 def credits():
+    
     return render_template("credits.html")
 #--------------------------------------------------------
 
