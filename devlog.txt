@@ -1,0 +1,114 @@
+***new entries go at the bottom***
+mdA -- 11-15-17 23:15
+added design doc, made devlog and summary files
+
+xingtaoS -- 11-15-17 23:15
+copied over db files and app file including login stuff
+
+augieM -- 11-22-17 13:28
+added templates for home, login, register, and diary
+added style.css
+
+augieM -- 11-23-17 21:10
+added templates for info, statistics, and citations
+added static folder (contains images and style.css)
+modified app.py to incorporate new methods
+
+augieM -- 11-24-17 12:13
+removed background images
+modified htmls
+
+sashaF -- 11-26-17
+Added api library of functions
+
+xingtaoS -- 11-26-17 19:50
+fixed db_func error: replaced db_func
+added usability w/ utils folder
+
+xingtaoS -- 11-27-17 14:04
+made create route
+fixed some bugs
+fixed html form
+
+sashaF -- 11-26-17
+Fixed ibm issue
+
+sashaF -- 11-26-17 8:44
+Fixed login and register
+
+sashaF -- 11-26-17 11:45
+Worked on viewing entries
+
+sashaF -- 11-26-17 13:25
+Worked on stuff
+
+sashaF -- 11-26-17 13:34
+debugging (fixed minor error)
+
+sashaF -- 11-26-17 14:05
+Worked on create
+
+sashaF -- 11-26-17 17:21
+Worked on create some more
+
+xingtaoS -- 11-28-17 23:57
+added button from register to login
+created cards template
+fixed centering issues
+made button css
+
+sashaF -- 11-29-17 0:05
+Finished create so that it appropriately adds songs to database based on a rating system
+
+xingtaoS - 11-29-17 0:10
+fixed centering issues 
+
+mdA - 11-29-17 0:30
+fixed some merge conflicts
+got new entries to show, bugs present
+
+sashaF - 11-29-17 1:03
+fixed disgust bug when viewing diary entries 
+added side bar with links by date to each entry 
+
+xingtaoS - 11-29-17 1:10
+styled buttons and got rid of filler text
+
+sashaF - 11-29-17 1:23
+added fxn song proper in api lib that would fix capitilization
+
+xingtaoS - 11-29-17 1:40
+added radio buttons for implementation of rating system, many styling bugs
+added logout, and back buttons to login and register
+
+mdA - 11-29-17 2:05
+got rid of radio buttons because it completely messed up styling of diary page 
+
+sashaF - 11-29-17 2:07
+fixed on diary page styling
+
+mdA - 11-29-17 2:15
+fixed bunch of bugs 
+deleted unimplemented features from display
+
+sashaF - 11-29-17 2:34
+fixed bugs in viewing entries and fixed a template styling of login and diary
+
+mdA - 11-29-17 3:02
+updated readme
+
+sashaF 11-29-17 3:40
+added feature to viewing entires that shows artist and url of song 
+
+mdA 11-29-17 8:17
+deleted our keys from public github repo and added code to fascilitate reading of keys.txt
+
+mdA 11-29-17 2:37
+fixed newline bug
+
+sashaF 11-29-17 4:11
+updated readme with keys instruction
+updated devlog
+
+
+

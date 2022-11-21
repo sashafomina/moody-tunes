@@ -1,0 +1,50 @@
+<! DOCTYPE HTML>
+<html>
+  <head>
+    
+    <!-- bootstrap !-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    
+    <!-- custom style for website !-->
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <title>  Home  </title>
+
+    <!-- messaging the user !-->
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h3> {{message}} </h3>
+    
+    {% endfor %}
+
+
+    <title>  Register  </title>
+  </head>
+
+  <body>
+  <center>
+      <div class="container-1">
+	Hello, please enter a username and password to register. <br><br>
+	<form class="signin" method = "POST" action ="/accountSubmit">
+          Username:
+          <input type="text" name="newUsername" required> <br><br>
+          Password:
+          <input type = "password" name = "newPassword" required>  <br><br>
+          <input type="submit" value="Register" class = "button2">
+	</form>
+
+	<form method = "GET" action = "/login">
+	  Already have an account?
+	  <input  type="submit" value = "Login" class = "button1">
+	</form>
+	<a href = "/"> Back <a>
+      </div>
+  </center>
+
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<! DOCTYPE html>
+<html>
+  
+  <head>
+    <!-- bootstrap !-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    
+    <!-- custom style for website !-->
+    <link rel="stylesheet" type="text/css" href="../static/style.css"/>
+    
+    <title>  Home  </title>
+
+    <!-- messaging the user !-->
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h3> {{message}} </h3>
+    
+    {% endfor %}
+
+
+    <div class="container-fluid">
+      <h1>MoodyTunes</h1>
+    </div>
+
+    <!-- navbar !-->
+    <div class="blog-masthead">
+      <div class="row-10">
+	<nav class="nav nav-lt">
+	  <a class="nav-link active" href="/">Home</a>
+	  <a class="nav-link" href="info">About Us</a>
+	  <a class="nav-link" href="credits">APIs/Credits</a>
+	</nav>
+      </div>
+    </div>
+
+  </head>
+
+  <body>
+    
+    <br><br>
+    
+    <!-- jumbotron: Greeting !-->
+    <div class="jumbotron ">
+      <h1 class="display-3">Welcome</h1>
+      <p class="lead">A song for your thought?</p>
+    </div>
+
+    <div class="row p-1">
+      Give us a diary entry... <br>
+      and we'll reccomend you a song!<br>
+      Rate the song to receive your next song<br>
+      
+    </div>
+    
+    <div class="row">
+      <div class="col">
+
+	<div class="box1">
+	  If you already have an account, sign in here!!!<br><br>
+	  <button type="button" class="btn btn-a btn-lg btn-block">
+	    <a href="login">Login</a>
+	  </button>
+	</div>
+
+      </div>
+      <div class="col">
+	<div class="box2">
+	  If you don't have an account, you can create one.
+	  <br><br>
+	  <button type="button" class="btn btn-a btn-lg btn-block">
+	    <a href="account">Register</a>
+	  </button>
+	</div>
+      </div>
+
+      <!-- carousel or something to take up space !-->
+
+
+  </body>
+</html>

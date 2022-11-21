@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+  
+    <!-- bootstrap !-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    
+    <!-- custom style for website !-->
+    <link rel="stylesheet" type="text/css" href="../static/style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <title>Diary</title>
+
+    <!-- messaging the user !-->
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h3> {{message}} </h3>
+    
+    {% endfor %}
+
+</head>
+
+<body>
+  <header>
+    <!-- heading !-->
+
+    <div class="blog-header">
+      <div class="container">
+	<h1 class="blog-title">{{name}}'s Moody Journal</h1>
+      </div>
+    </div>
+	
+	<div class="blog-masthead">
+      <div class="row-10">
+	<nav class="nav">
+	  <a class="nav-link active" href="/">Home</a>
+	  
+	  <a class="nav-link" href="logout">Logout</a>
+	</nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- journal entries (feed) !-->
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-sm-8 blog-main">
+	
+	<!-- new entry !-->
+	<br>
+
+	<div class="container">
+	  <form class = "form-group" method = "POST"  action="/create">
+	    <legend>New Diary Entry</legend>
+	    <!--<input style="height:200px; word-wrap: break-all;" class ="form-control" type ="text" name = "newDiaryEntry" required> <br>!-->
+	    <textarea class="form-control" id="exampleTextarea" rows="5" name = "newDiaryEntry" required></textarea>
+	    <input class="btn-block" type="submit" value="Create">
+	  </form>
+	</div>
+
+	<!-- display previous entries accordian-style !-->
+	<!-- entries will be a list of lists [[date1, entry1] !-->
+
+	{% for data in diary %}
+	<div id="{{data[4]}}" class="card-group">
+	  <div class="card">
+	    
+	    <div class="card-block">
+	      <h4 class="card-title">{{data[4]}}</h4>
+	      <p class="card-text">{{data[2]}}.</p>
+	      
+	    </div>
+	  </div>
+	  <div class="card">
+	    
+	    <div class="card-block">
+	      <h4 class="card-title">We think you're feeling: {{data[3]}}</h4>
+	      <p class="card-text">Song: {{data[5]}}</p>
+		  <p class="card-text">Artist: {{data[0]}}</p>
+		  <p class="card-text">Listen to the song <a style= "font-weight:bold;" href= "{{data[1]}}" >here!</a></p>
+		  <p style = "text-decoration:underline;">Rate this song: Do you vibe with it?
+			<form method="POST" action = "/rate">
+			  <div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-primary {{data[6][0]}}">
+					<input value="one" type="radio" name="options" id="option1" autocomplete="off" {{data[7][0]}}> 1 star
+				  </label>
+				  <label class="btn btn-primary {{data[6][1]}}">
+					<input value = "two" type="radio" name="options" id="option2" autocomplete="off" {{data[7][1]}}> 2 stars
+				  </label>
+				  <label class="btn btn-primary {{data[6][2]}}">
+					<input value ="three" type="radio" name="options" id="option3" autocomplete="off" {{data[7][2]}}> 3 stars
+				  </label>
+				</div>
+				<input class="btn btn-secondary btn-sm" type="submit" value="Save rating">
+			</form>
+			</p>
+	    </div>
+	  </div>
+	</div>
+	<br>
+	<br>
+	<br>
+	{% endfor %}
+      </div>
+      
+      <!-- sidebar !-->
+      <aside class="col-sm-3 ml-sm-auto blog-sidebar">
+
+	<!-- about this journal or something !-->
+
+
+	<!-- archive !-->
+	<div class="sidebar-module">
+	  <h4>History</h4>
+	  <ol class="list-unstyled">
+		{% for data in diary %}
+	    <form method='Post'>
+	      <li><a href="#{{data[4]}}"><input type="hidden" ></input>{{data[4]}}</a></li>
+	    </form>
+		{% endfor %}
+	  </ol>
+	</div>
+      </aside>
+      
+  </main>
+
+</body>
+</html>

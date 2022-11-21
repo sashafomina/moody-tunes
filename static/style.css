@@ -1,0 +1,158 @@
+a {
+    text: 10px Times;
+    color: black;
+	font-weight:bold;
+}
+
+
+.blog-header {
+    padding:15px;
+    background-color: white;
+}
+
+.blog-main {
+    background-color: oldlace;
+}
+
+.blog-masthead{
+    background-color:LightSteelBlue;
+}
+
+.blog-sidebar{
+
+}
+
+body {
+    background-color:#eceeef;
+    height: 100%;
+}
+
+.box1{
+    text-align:center;
+    padding:15px;
+    background-color:#465C8B;
+    margin-left:3rem;
+    border-radius:5px;
+    font:20px Arial;
+}
+
+.box2{
+    text-align: enter;
+    padding:15px;
+    background-color:#465C8B;
+    margin-right:3rem;
+    border-radius:5px;
+    font:20px Arial;
+}
+
+.btn-a {
+    background-color:seashell;
+    color: Black;
+}
+
+button{
+    background-color:SeaShell;
+}
+
+.container {
+}
+
+.container-1 {
+    text-align: center;
+    background-color:LightSteelBlue;
+    padding:15px;
+}
+
+.container-fluid {
+    background-color:#CAE4DB; 
+    color:#465C8B;
+    padding:25px;
+    font: 25px Courier;
+    text-align: left;
+}
+
+div{
+
+
+}
+
+/** used in jumbotron **/
+.display-3 {
+    font:70px Arial;
+    color: DarkSlateGrey;
+}
+
+.form{
+    padding: 15px;
+}
+
+.form-group{
+    padding:15px;
+    background-color:darkseagreen;
+    border-radius:5px;
+}
+
+h2{
+}
+
+head {
+}
+
+html{
+    height:100%;
+}
+
+.jumbotron{
+    background-color:AliceBlue;
+    text-align:center;
+    padding:15px;
+}
+
+.lead {
+    font: 20px Times;
+}
+
+main {
+}
+
+.nav-lt {
+    background-color:seashell;
+    color:DarkSlateGrey;
+}
+
+.p-1{
+    margin-left:3rem;
+    margin-right:3rem;
+    color:black;
+}
+
+.sidebar-module {
+    text-align: center;
+    background-color:#ccc;
+    padding:15px;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+#music:hover{
+	background-color: darkseagreen;
+	color:white;
+}
+
+
+.button {
+}
+
+.button1 {
+    background-color: green; 
+    color: white; 
+    /*border: 2px solid #4CAF50;*/
+}
+
+.button2 {
+    background-color: blue; 
+    color: white; 
+    /*border: 2px solid blue;*/
+}
+
+
